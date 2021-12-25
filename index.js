@@ -20,26 +20,20 @@ submit_button = document.querySelector("#root > div > div > div > div.MuiContain
 function complete_ucheck(username, password) {    
     login(username, password)
     setTimeout(start_form, 5000)
-    setTimeout(fill_ucheck_forms(), 5000)
+    setTimeout(fill_ucheck_forms, 5000)
 }
 
 function login(username, password) {
-    if (window.location.href != login_page) return 
-
     document.querySelector("#username").value = username;
     document.querySelector("#password").value = password;
     document.querySelector(login_button).click()
 }
 
 function start_form() {
-    if (window.location.href != ucheck_home) return
-
     document.getElementsByClassName(start_button)[0].click()
 }
 
 function fill_ucheck_forms(){
-    if (window.location.href != ucheck_form) return
-
     let form_inputs = document.getElementsByClassName(form_input_class)
 
     for (let i = 1; i < 15; i++) {
@@ -49,4 +43,3 @@ function fill_ucheck_forms(){
 
     submit_button.click()
 }
-

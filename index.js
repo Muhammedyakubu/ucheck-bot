@@ -12,7 +12,7 @@ ucheck_form = 'https://ucheck.utoronto.ca/questionnaire?org=22f9f13e-e281-4688-9
 login_button = "body > div.container > div > div.col-md-4 > div.login-box > form > button",
 start_button = "MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-fullWidth",
 form_input_class = "sc-pRFZy iIPyzR",
-submit_button = document.querySelector("#root > div > div > div > div.MuiContainer-root.sc-pRgDJ.sc-pZdvY.dlLhKU.MuiContainer-maxWidthMd > main > div > div > div > div > div > button > span.MuiButton-label");
+submit_button = document.querySelectorAll("[type=button]").item(1);
 
 
 
@@ -36,10 +36,18 @@ function start_form() {
 function fill_ucheck_forms(){
     let form_inputs = document.getElementsByClassName(form_input_class)
 
-    for (let i = 1; i < 15; i++) {
-        if (i == 1 || i % 2 == 0) 
-            form_inputs[i].click();
-    }
+    let radios = document.querySelectorAll("[type=radio]")
 
+    for (let i = 1; i < 15; i++) {
+        radios = document.querySelectorAll("[type=radio]")
+        if (i == 1 || i % 2 == 0) {
+            console.log(radios[i]);
+            if (radios.item(i) === null) 
+                break;
+            else 
+                radios.item(i).click();
+        }
+    }
+    
     submit_button.click()
 }
